@@ -1,0 +1,21 @@
+{% extends "base_layout.html" %}
+{% block title %}Teams{% endblock %}
+{% block custom_assets %}
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    {% assets "landing_css" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock %}
+
+{% block content %}
+    <div class="row header mt-4 mb-4">
+        <div class="col-sm-12">
+            <div class="header-title">
+                <h1>Teams Page</h1>
+                <div class="header-description mb-4">
+                    We can list teams off in a table format?
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
