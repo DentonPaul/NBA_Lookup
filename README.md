@@ -1,2 +1,2 @@
 # NBA Lookup App
-- description coming soon
+- An online platform that makes it easy to explore team, player, and game data.
