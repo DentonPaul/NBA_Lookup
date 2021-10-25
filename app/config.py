@@ -1,13 +1,13 @@
 import os
 
 class BaseConfig:
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///dev.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///dev.db'
+    SQLALCHEMY_DATABASE_URI = f"mysql://root:{os.getenv('mysql_password')}@localhost/dev"
 
 class TestConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
+    SQLALCHEMY_DATABASE_URI = f"mysql://root:{os.getenv('mysql_password')}@localhost/test"
 
 class ProdConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')

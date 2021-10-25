@@ -1,6 +1,9 @@
 flask
 
+mysqlclient
+
 flask-assets
+flask-sqlalchemy
 cssmin
 jsmin
 

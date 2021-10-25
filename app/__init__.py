@@ -12,12 +12,13 @@ from app.config import configurations
 from webassets.loaders import PythonLoader as PythonAssetsLoader
 from app import assets
 
-from app.extensions import assets_env
+from app.extensions import assets_env, db
 
 def create_app(env_name='dev'):
     app = Flask(__name__)
     app.config.from_object(configurations[env_name])
 
+    db.init_app(app)
     assets_env.init_app(app)
 
     assets_loader = PythonAssetsLoader(assets)
