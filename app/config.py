@@ -12,7 +12,7 @@ class TestConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = f"mysql://root:{mysql_password}@localhost/nba_test"
 
 class ProdConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = os.getenv('CLEARDB_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 configurations = {
     'dev': DevConfig,
