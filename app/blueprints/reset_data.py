@@ -11,13 +11,13 @@ reset_data_bp = Blueprint('reset_data', __name__)
 def index():
 
     # delete data from tables
-    db.session.execute('DELETE from Teams;')
-    db.session.execute('DELETE from Coach_Stats;')
-    db.session.execute('DELETE from Coaches;')
-    db.session.execute('DELETE from Player_Stats;')
-    db.session.execute('DELETE from Players;')
-    db.session.execute('DELETE from Team_Stats;')
-    db.session.execute('DELETE from Top_Scorers;')
+    # db.session.execute('DELETE from Teams;')
+    # db.session.execute('DELETE from Coach_Stats;')
+    # db.session.execute('DELETE from Coaches;')
+    # db.session.execute('DELETE from Player_Stats;')
+    # db.session.execute('DELETE from Players;')
+    # db.session.execute('DELETE from Team_Stats;')
+    # db.session.execute('DELETE from Top_Scorers;')
 
     df = pd.read_csv('app/static/files/Teams.csv')
     df = df.replace(np.nan, -1)
