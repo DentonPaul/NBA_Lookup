@@ -96,8 +96,8 @@ class Team_Stats(db.Model):
 
 
 class Teams(db.Model):
-    __tablename__ = 'Teams'
-    __table_args__ = {"schema": "Teams"}
+    __tablename__ = 'teams'
+    __table_args__ = {"schema": "teams"}
     TeamID = db.Column(db.Integer, primary_key = True)
     TeamName = db.Column(db.String(225), nullable = False)
     TeamAbbr = db.Column(db.String(225), nullable = False)
