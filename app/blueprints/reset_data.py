@@ -14,14 +14,22 @@ def index():
 
     # delete data from tables
 
-    db.engine.execute('DELETE from teams')
-    db.engine.execute('DELETE from coachstats')
-    db.engine.execute('DELETE from coaches')
-    db.engine.execute('DELETE from playerstats')
-    db.engine.execute('DELETE from players')
-    db.engine.execute('DELETE from teamstats')
-    db.engine.execute('DELETE from topscorers')
+    db.session.query(Coach_Stats).delete()
+    db.session.commit()
+    db.session.query(Teams).delete()
+    db.session.commit()
+    db.session.query(Coaches).delete()
+    db.session.commit()
+    db.session.query(Player_Stats).delete()
+    db.session.commit()
+    db.session.query(Players).delete()
+    db.session.commit()
+    db.session.query(Team_Stats).delete()
+    db.session.commit()
+    db.session.query(Top_Scorers).delete()
+    db.session.commit()
 
+    # add data
     df = pd.read_csv('app/static/files/Teams.csv')
     df = df.replace(np.nan, -1)
 
