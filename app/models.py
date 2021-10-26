@@ -3,7 +3,7 @@ from sqlalchemy.orm import validates
 from app.extensions import db
 
 class Coach_Stats(db.Model):
-    __tablename__ = 'Coach_Stats'
+    __tablename__ = 'coachstats'
     Name = db.Column(db.String(255), primary_key = True)
     Team = db.Column(db.String(255), nullable = False)
     SeasG = db.Column(db.Integer, nullable = False)
@@ -27,12 +27,12 @@ class Coach_Stats(db.Model):
 
 
 class Coaches(db.Model):
-    __tablename__ = 'Coaches'
+    __tablename__ = 'coaches'
     Name = db.Column(db.String(225), primary_key = True)
     TeamID = db.Column(db.Integer, nullable = False)
 
 class Player_Stats(db.Model):
-    __tablename__ = 'Player_Stats'
+    __tablename__ = 'playerstats'
     Player = db.Column(db.String(225), primary_key = True)
     Tm = db.Column(db.String(225), primary_key = True)
     Gms = db.Column(db.Integer, nullable = False)
@@ -62,13 +62,13 @@ class Player_Stats(db.Model):
     PTS = db.Column(db.Integer, nullable = False)
 
 class Players(db.Model):
-    __tablename__ = 'Players'
+    __tablename__ = 'players'
     Name = db.Column(db.String(225), primary_key = True)
     Pos = db.Column(db.String(225), nullable = False)
     Age = db.Column(db.Integer, nullable = False)
 
 class Team_Stats(db.Model):
-    __tablename__ = 'Team_Stats'
+    __tablename__ = 'teamstats'
     TeamID = db.Column(db.Integer, primary_key = True)
     Gms = db.Column(db.Integer, nullable = False)
     MP = db.Column(db.Integer, nullable = False)
@@ -104,7 +104,7 @@ class Teams(db.Model):
     Location = db.Column(db.String(225), nullable = False)
 
 class Top_Scorers(db.Model):
-    __tablename__ = 'Top_Scorers'
+    __tablename__ = 'topscorers'
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     Points = db.Column(db.Integer, nullable = False)
     Name = db.Column(db.String(225), nullable = False)
