@@ -12,7 +12,7 @@ def index():
 
     # delete data from tables
     # db.session.execute()
-    db.session.execute('Select * From Teams')
+    # db.session.execute('Select * From Teams')
     # db.session.execute('DELETE from Teams;')
     # db.session.execute('DELETE from Coach_Stats;')
     # db.session.execute('DELETE from Coaches;')
