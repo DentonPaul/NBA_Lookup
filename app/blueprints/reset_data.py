@@ -165,4 +165,6 @@ def index():
         db.session.add(top_scorer)
         db.session.commit()
 
+    db.engine.execute('select * from teams')
+
     return "Success! All data has been reset."
