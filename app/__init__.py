@@ -6,6 +6,7 @@ from app.blueprints.trades import trades_bp
 from app.blueprints.drafted import drafted_bp
 from app.blueprints.retired import retired_bp
 from app.blueprints.teams import teams_bp
+from app.blueprints.reset_data import reset_data_bp
 
 from app.config import configurations
 
@@ -32,6 +33,7 @@ def create_app(env_name='dev'):
     app.register_blueprint(teams_bp)
     app.register_blueprint(drafted_bp)
     app.register_blueprint(retired_bp)
+    app.register_blueprint(reset_data_bp)
 
     # register error handlers
     @app.errorhandler(404)

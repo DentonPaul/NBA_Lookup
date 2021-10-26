@@ -4,10 +4,12 @@ class BaseConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = f"mysql://root:{os.getenv('mysql_password')}@localhost/dev"
+    mysql_password = "INSERT PASSWORD HERE"
+    SQLALCHEMY_DATABASE_URI = f"mysql://root:{mysql_password}@localhost/nba_dev"
 
 class TestConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = f"mysql://root:{os.getenv('mysql_password')}@localhost/test"
+    mysql_password = "INSERT PASSWORD HERE"
+    SQLALCHEMY_DATABASE_URI = f"mysql://root:{mysql_password}@localhost/nba_test"
 
 class ProdConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')

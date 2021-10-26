@@ -7,10 +7,9 @@ env
 .cache
 _cache/*
 
+*.DS_Store
 # local development
-database.db
 *.db
-*.db-journal
 
 # pytest
 .coverage
