@@ -14,9 +14,10 @@ def index():
 
     # delete data from tables
     # db.session.execute()
-    # sql = text('select * from Teams')
-    return str(db.engine.table_names())
-    # result = db.engine.execute(sql)
+    sql = text('select * from Teams')
+    # return str(db.engine.table_names())
+    result = db.engine.execute(sql)
+    return "success"
     # names = [row[0] for row in result]
     # print names
     # db.session.execute('Select * From Teams')
