@@ -15,7 +15,7 @@ def index():
     # delete data from tables
     # db.session.execute()
     # sql = text('select * from Teams')
-    return db.engine.table_names()
+    return str(db.engine.table_names())
     # result = db.engine.execute(sql)
     # names = [row[0] for row in result]
     # print names
@@ -163,4 +163,4 @@ def index():
     #     db.session.add(top_scorer)
     #     db.session.commit()
 
-    return "Success! All data has been reset."
+    # return "Success! All data has been reset."
