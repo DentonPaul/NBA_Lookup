@@ -34,7 +34,7 @@ def index():
     df = df.replace(np.nan, -1)
 
     for index, row in df.iterrows():
-        team = Teams(TeamID=row.TeamID, TeamName=row.TeamName, TeamAbbr=row.TeamAbbr, Location=row.Location)
+        team = Teams(teamid=row.TeamID, teamname=row.TeamName, teamabbr=row.TeamAbbr, location=row.Location)
         db.session.add(team)
         db.session.commit()
 
@@ -42,26 +42,26 @@ def index():
     df = df.replace(np.nan, -1)
     for index, row in df.iterrows():
         coach_stat = Coach_Stats(
-            Name=row.Name,
-            Team=row.Team,
-            SeasG=row.SeasG,
-            SeasW=row.SeasW,
-            SeasL=row.SeasL,
-            FranG=row.FranG,
-            FranW=row.FranW,
-            FranL=row.FranL,
-            CareW=row.CareW,
-            CareL=row.CareL,
-            CareWP=row.CareWP,
-            POSeasG=row.POSeasG,
-            POSeasW=row.POSeasW,
-            POSeasL=row.POSeasL,
-            POFranG=row.POFranG,
-            POFranW=row.POFranW,
-            POFranL=row.POFranL,
-            POCareG=row.POCareG,
-            POCareW=row.POCareW,
-            POCareL=row.POCareL
+            name=row.Name,
+            team=row.Team,
+            seasg=row.SeasG,
+            seasw=row.SeasW,
+            seasl=row.SeasL,
+            frang=row.FranG,
+            franw=row.FranW,
+            franl=row.FranL,
+            carew=row.CareW,
+            carel=row.CareL,
+            carewp=row.CareWP,
+            poseasg=row.POSeasG,
+            poseasw=row.POSeasW,
+            poseasl=row.POSeasL,
+            pofrang=row.POFranG,
+            pofranw=row.POFranW,
+            pofranl=row.POFranL,
+            pocareg=row.POCareG,
+            pocarew=row.POCareW,
+            pocarel=row.POCareL
         )
         db.session.add(coach_stat)
         db.session.commit()
@@ -69,7 +69,7 @@ def index():
     df = pd.read_csv('app/static/files/Coaches.csv')
 
     for index, row in df.iterrows():
-        coach = Coaches(Name=row.Name, TeamID=row.TeamID)
+        coach = Coaches(name=row.Name, teamid=row.TeamID)
         db.session.add(coach)
         db.session.commit()
 
@@ -77,33 +77,33 @@ def index():
     df = df.replace(np.nan, -1)
     for index, row in df.iterrows():
         player_stats = Player_Stats(
-            Player=row.Player,
-            Tm = row.Tm,
-            Gms = row.Gms,
-            Gstart = row.Gstart,
-            MP = row.MP,
-            FG = row.FG,
-            FGA = row.FGA,
-            FGP = row.FGP,
-            ThreeP = row.ThreeP,
-            ThreePA = row.ThreePA,
-            ThreePP = row.ThreePP,
-            TwoP = row.TwoP,
-            TwoPA = row.TwoPA,
-            TwoPP = row.TwoPP,
-            eFGP = row.eFGP,
-            FT = row.FT,
-            FTA = row.FTA,
-            FTP = row.FTP,
-            ORB = row.ORB,
-            DRB = row.DRB,
-            TRB = row.TRB,
-            AST = row.AST,
-            STL = row.STL,
-            BLK = row.BLK,
-            TOV = row.TOV,
-            PF = row.PF,
-            PTS = row.PTS
+            player=row.Player,
+            tm = row.Tm,
+            gms = row.Gms,
+            gstart = row.Gstart,
+            mp = row.MP,
+            fg = row.FG,
+            fga = row.FGA,
+            fgp = row.FGP,
+            threep = row.ThreeP,
+            threepa = row.ThreePA,
+            threepp = row.ThreePP,
+            twop = row.TwoP,
+            twopa = row.TwoPA,
+            twopp = row.TwoPP,
+            efgp = row.eFGP,
+            ft = row.FT,
+            fta = row.FTA,
+            ftp = row.FTP,
+            orb = row.ORB,
+            drb = row.DRB,
+            trb = row.TRB,
+            ast = row.AST,
+            stl = row.STL,
+            blk = row.BLK,
+            tov = row.TOV,
+            pf = row.PF,
+            pts = row.PTS
         )
 
         db.session.add(player_stats)
@@ -112,7 +112,7 @@ def index():
     df = pd.read_csv('app/static/files/Players.csv')
     
     for index, row in df.iterrows():
-        player = Players(Name=row.Name, Pos=row.Pos, Age=row.Age)
+        player = Players(name=row.Name, pos=row.Pos, age=row.Age)
         db.session.add(player)
         db.session.commit()
 
@@ -120,30 +120,30 @@ def index():
     
     for index, row in df.iterrows():
         team_stats = Team_Stats(
-            TeamID=row.TeamID,
-            Gms=row.Gms,
-            MP=row.MP,
-            FG=row.FG,
-            FGA=row.FGA,
-            FGP=row.FGP,
-            ThreeP=row.ThreeP,
-            ThreePA=row.ThreePA,
-            ThreePP=row.ThreePP,
-            TwoP=row.TwoP,
-            TwoPA=row.TwoPA,
-            TwoPP=row.TwoPP,
-            FT=row.FT,
-            FTA=row.FTA,
-            FTP=row.FTP,
-            ORB=row.ORB,
-            DRB=row.DRB,
-            TRB=row.TRB,
-            AST=row.AST,
-            STL=row.STL,
-            BLK=row.BLK,
-            TOV=row.TOV,
-            PF=row.PF,
-            PTS=row.PTS
+            teamid=row.TeamID,
+            gms=row.Gms,
+            mp=row.MP,
+            fg=row.FG,
+            fga=row.FGA,
+            fgp=row.FGP,
+            threep=row.ThreeP,
+            threepa=row.ThreePA,
+            threepp=row.ThreePP,
+            twop=row.TwoP,
+            twopa=row.TwoPA,
+            twopp=row.TwoPP,
+            ft=row.FT,
+            fta=row.FTA,
+            ftp=row.FTP,
+            orb=row.ORB,
+            drb=row.DRB,
+            trb=row.TRB,
+            ast=row.AST,
+            stl=row.STL,
+            blk=row.BLK,
+            tov=row.TOV,
+            pf=row.PF,
+            pts=row.PTS
         )
         db.session.add(team_stats)
         db.session.commit()
@@ -152,14 +152,14 @@ def index():
     df = df.replace(np.nan, -1)
     for index, row in df.iterrows():
         top_scorer = Top_Scorers(
-            Points=row.Points,
-            Name=row.Name,
-            Year=row.Year,
-            TeamName=row.TeamName,
-            OppTeamName=row.OppTeamName,
-            TeamScore=row.TeamScore,
-            OppTeamScore=row.OppTeamScore,
-            MinsPlayed=row.MinsPlayed
+            points=row.Points,
+            name=row.Name,
+            year=row.Year,
+            teamname=row.TeamName,
+            oppteamname=row.OppTeamName,
+            teamscore=row.TeamScore,
+            oppteamscore=row.OppTeamScore,
+            minsplayed=row.MinsPlayed
         )
 
         db.session.add(top_scorer)
