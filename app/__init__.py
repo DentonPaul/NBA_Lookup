@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 
 from app.blueprints.landing import landing_bp
-from app.blueprints.other import other_bp
+from app.blueprints.players import players_bp
 from app.blueprints.trades import trades_bp
 from app.blueprints.drafted import drafted_bp
 from app.blueprints.retired import retired_bp
@@ -29,7 +29,7 @@ def create_app(env_name='dev'):
 
     # register blueprints
     app.register_blueprint(landing_bp)
-    app.register_blueprint(other_bp)
+    app.register_blueprint(players_bp)
     app.register_blueprint(trades_bp)
     app.register_blueprint(teams_bp)
     app.register_blueprint(drafted_bp)

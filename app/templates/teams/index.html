@@ -1,4 +1,5 @@
 {% extends "base_layout.html" %}
+{% from "_formhelpers.html" import render_field %}
 {% block title %}Teams{% endblock %}
 {% block custom_assets %}
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -13,9 +14,119 @@
             <div class="header-title">
                 <h1>Teams Page</h1>
                 <div class="header-description mb-4">
-                    We can list teams off in a table format?
+                    Enter a team name to return their statistics.
                 </div>
             </div>
         </div>
     </div>
+
+  <div class="container">
+
+    <form method="POST" action="{{ url_for('teams.create') }}">
+
+      {{ render_field(form.TeamName, placeholder="Detroit Pistons") }}
+      <button type="submit" class="btn btn-primary">LookUp</button>
+    </form>
+
+  </div>
+
+  {% if tables %}  
+  <br></br>
+  <div class="container">
+        <div class="header-title">
+            <h3>{{TeamName}}</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Team Name</th>
+                            <th class="thead-row" scope="col">Abbreviation</th>
+                            <th class="thead-row" scope="col">Location</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in general_rows %}
+                                <tr class="trow">
+                                    <td>{{row.TeamName}}</td>
+                                    <td>{{row.TeamAbbr}}</td>
+                                    <td>{{row.Location}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+
+    <br></br>
+
+    <div class="container">
+        <div class="header-title">
+            <h3>Team Stats 2018-2019</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table-sm">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Games</th>
+                            <th class="thead-row" scope="col">MP</th>
+                            <th class="thead-row" scope="col">FG</th>
+                            <th class="thead-row" scope="col">FGA</th>
+                            <th class="thead-row" scope="col">FGP</th>
+                            <th class="thead-row" scope="col">3P</th>
+                            <th class="thead-row" scope="col">3PA</th>
+                            <th class="thead-row" scope="col">3PP</th>
+                            <th class="thead-row" scope="col">2P</th>
+                            <th class="thead-row" scope="col">2PA</th>
+                            <th class="thead-row" scope="col">2PP</th>
+                            <th class="thead-row" scope="col">FT</th>
+                            <th class="thead-row" scope="col">FTA</th>
+                            <th class="thead-row" scope="col">FTP</th>
+                            <th class="thead-row" scope="col">ORB</th>
+                            <th class="thead-row" scope="col">DRB</th>
+                            <th class="thead-row" scope="col">TRB</th>
+                            <th class="thead-row" scope="col">AST</th>
+                            <th class="thead-row" scope="col">STL</th>
+                            <th class="thead-row" scope="col">BLK</th>
+                            <th class="thead-row" scope="col">TOV</th>
+                            <th class="thead-row" scope="col">PF</th>
+                            <th class="thead-row" scope="col">PTS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in stat_rows %}
+                                <tr class="trow">
+                                    <td>{{row.Gms}}</td>
+                                    <td>{{row.MP}}</td>
+                                    <td>{{row.FG}}</td>
+                                    <td>{{row.FGA}}</td>
+                                    <td>{{row.FGP}}</td>
+                                    <td>{{row.ThreeP}}</td>
+                                    <td>{{row.ThreePA}}</td>
+                                    <td>{{row.ThreePP}}</td>
+                                    <td>{{row.TwoP}}</td>
+                                    <td>{{row.TwoPA}}</td>
+                                    <td>{{row.TwoPP}}</td>
+                                    <td>{{row.FT}}</td>
+                                    <td>{{row.FTA}}</td>
+                                    <td>{{row.FTP}}</td>
+                                    <td>{{row.ORB}}</td>
+                                    <td>{{row.DRB}}</td>
+                                    <td>{{row.TRB}}</td>
+                                    <td>{{row.AST}}</td>
+                                    <td>{{row.STL}}</td>
+                                    <td>{{row.BLK}}</td>
+                                    <td>{{row.TOV}}</td>
+                                    <td>{{row.PF}}</td>
+                                    <td>{{row.PTS}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+    <br></br>
+{% endif %}
+
+
 {% endblock %}

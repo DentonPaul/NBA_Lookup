@@ -2,9 +2,11 @@ import os
 
 class BaseConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    
 class DevConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
+    
 
 class TestConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "sqlite:///test.db"

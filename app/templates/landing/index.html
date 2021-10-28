@@ -17,5 +17,10 @@
                 </div>
             </div>
         </div>
+        <a href="{{ url_for('teams.index') }}" class="btn btn-outline-primary mr-2" role="button">Search Teams</a>
+        <a href="{{ url_for('players.index') }}" class="btn btn-outline-primary mr-2" role="button">Search Players</a>
+        <a href="{{ url_for('trades.index') }}" class="btn btn-outline-primary mr-2" role="button">Traded Players</a>
+        <a href="{{ url_for('retired.index') }}" class="btn btn-outline-primary mr-2" role="button">Retired Players</a>
+        <a href="{{ url_for('drafted.index') }}" class="btn btn-outline-primary" role="button">NBA Draft News</a>
     </div>
 {% endblock %}

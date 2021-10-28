@@ -1,10 +1,7 @@
-from re import L, T
 from flask import Blueprint
 import pandas as pd
-import numpy as np
 from flask import render_template
 from app.extensions import db
-from app.models import Coach_Stats, Teams, Coaches, Player_Stats, Players, Team_Stats, Top_Scorers
 
 see_data_bp = Blueprint('test_raw_sql', __name__)
 

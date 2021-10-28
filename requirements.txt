@@ -6,6 +6,7 @@ pymysql
 mysqlclient
 pandas
 
+Flask-WTF
 flask-assets
 flask-sqlalchemy
 cssmin
