@@ -1,0 +1,17 @@
+{% extends "base_layout.html" %}
+{% block title %} Success {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Our Database has been reset!</h1>
+        <p class="lead">All tables have been filled with their default values.</p>
+        <div class="lead mt-4">
+            <a href="{{ url_for('landing.index') }}" class="btn btn-primary btn-lg" role="button">
+                Home Page
+            </a>
+        </div>
+    </div>
+    </div>
+  </div>
+{% endblock %}

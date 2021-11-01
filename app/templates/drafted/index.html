@@ -1,5 +1,6 @@
 {% extends "base_layout.html" %}
-{% block title %}Drafted{% endblock %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}Player Search{% endblock %}
 {% block custom_assets %}
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     {% assets "landing_css" %}
@@ -11,11 +12,44 @@
     <div class="row header mt-4 mb-4">
         <div class="col-sm-12">
             <div class="header-title">
-                <h1>Drafted Page</h1>
+                <h1>Add Drafted Players</h1>
                 <div class="header-description mb-4">
-                    We can list off players that have been recently drafted
+                    Enter player statistics to add to our database.
                 </div>
             </div>
         </div>
     </div>
+
+  <div class="container">
+
+    <form method="POST" action="{{ url_for('drafted.add') }}">
+
+      {{ render_field(form.PlayerName, placeholder="Joe Smith") }}
+      {{ render_field(form.age, placeholder="30") }}
+      {{ render_field(form.team, placeholder="Detroit Pistons") }}
+      {{ render_field(form.pos, placeholder="PF") }}
+      {{ render_field(form.gms, placeholder="82") }}
+      {{ render_field(form.fg, placeholder="857") }}
+      {{ render_field(form.fga, placeholder="1500") }}
+      {{ render_field(form.twop, placeholder="708") }}
+      {{ render_field(form.twopa, placeholder="1174") }}
+      {{ render_field(form.threep, placeholder="149") }}
+      {{ render_field(form.threepa, placeholder="406") }}
+      {{ render_field(form.ft, placeholder="388") }}
+      {{ render_field(form.fta, placeholder="531") }}
+      {{ render_field(form.orb, placeholder="97") }}
+      {{ render_field(form.drb, placeholder="612") }}
+      {{ render_field(form.ast, placeholder="747") }}
+      {{ render_field(form.stl, placeholder="116") }}
+      {{ render_field(form.blk, placeholder="71") }}
+      {{ render_field(form.tov, placeholder="347") }}
+      {{ render_field(form.pf, placeholder="136") }}
+      {{ render_field(form.pts, placeholder="2251") }}
+      <button type="submit" class="btn btn-primary">Add Player</button>
+
+    </form>
+
+  </div>
+  <br></br>
+
 {% endblock %}

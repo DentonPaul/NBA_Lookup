@@ -1,5 +1,6 @@
 from re import L, T
 from flask import Blueprint
+from flask.templating import render_template
 import pandas as pd
 import numpy as np
 from app.extensions import db
@@ -167,4 +168,4 @@ def index():
 
     db.engine.execute('select * from teams')
 
-    return "Success! All data has been reset."
+    return render_template('data/reset_data.html')
