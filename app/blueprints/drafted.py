@@ -21,13 +21,17 @@ def add():
     ftp = round(form.ft.data / form.fta.data, 4)
     trb = form.orb.data + form.drb.data
 
+    #####
+    # Raw SQL
     sql_team = f"select teamabbr from teams where teamname='{form.team.data}'"
-    
     df_team = pd.read_sql_query(sql_team, db.get_engine())
+    #####
 
     rows = [row for index, row in df_team.iterrows()]
     tm = rows[0][0]
 
+    #####
+    # Raw SQL
     sql_stats = f"""
     INSERT INTO playerstats(player, tm, gms, gstart, mp, fg, fga, fgp, threep, threepa, threepp, 
     twop, twopa, twopp, efgp, ft, fta, ftp, orb, drb, trb, ast, stl, blk, tov, pf, pts)
@@ -37,9 +41,10 @@ def add():
     {form.drb.data}, {trb}, {form.ast.data}, {form.stl.data}, {form.blk.data}, {form.tov.data},
     {form.pf.data}, {form.pts.data});
     """
-
     db.engine.execute(sql_stats)
     db.session.commit()
+    #####
+
 
     stats = [[form.PlayerName.data], [form.team.data], [form.gms.data], [0], [0], [form.fg.data],
     [form.fga.data], [fgp], [form.threep.data], [form.threepa.data], [threepp], [form.twop.data], 
@@ -55,15 +60,15 @@ def add():
     stat_rows = [row for index, row in d.iterrows()]
 
 
-    ## player
+    #####
+    # Raw SQL
     sql_general = f"""
     INSERT INTO players(name, pos, age)
     VALUES ('{form.PlayerName.data}', '{form.pos.data}', {form.age.data});
     """
-
     db.engine.execute(sql_general)
     db.session.commit()
-
+    #####
 
     df_gen = pd.DataFrame(dict(name=[form.PlayerName.data], pos=[form.pos.data], age=[form.age.data]))
     general_rows = [row for index, row in df_gen.iterrows()]

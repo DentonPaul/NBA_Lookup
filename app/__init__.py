@@ -8,6 +8,9 @@ from app.blueprints.retired import retired_bp
 from app.blueprints.teams import teams_bp
 from app.blueprints.reset_data import reset_data_bp
 from app.blueprints.data import see_data_bp
+from app.blueprints.initialize import initialize_bp
+from app.blueprints.specific import specific_bp
+from app.blueprints.general import general_bp
 
 from app.config import configurations
 
@@ -36,6 +39,9 @@ def create_app(env_name='dev'):
     app.register_blueprint(retired_bp)
     app.register_blueprint(reset_data_bp)
     app.register_blueprint(see_data_bp)
+    app.register_blueprint(initialize_bp)
+    app.register_blueprint(specific_bp)
+    app.register_blueprint(general_bp)
 
     # register error handlers
     @app.errorhandler(404)

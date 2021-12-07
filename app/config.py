@@ -5,11 +5,12 @@ class BaseConfig:
     SECRET_KEY = os.getenv('SECRET_KEY')
     
 class DevConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
+    # SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
+    SQLALCHEMY_DATABASE_URI = "mysql://root:Turtleturtle7!@localhost/nba_dev"
     
 
 class TestConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///test.db"
+    SQLALCHEMY_DATABASE_URI = "mysql://root:Turtleturtle7!@localhost/nba_test"
 
 class ProdConfig(BaseConfig):
     try:

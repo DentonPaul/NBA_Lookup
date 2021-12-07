@@ -1,4 +1,5 @@
 {% extends "base_layout.html" %}
+{% from "_formhelpers.html" import render_field %}
 {% block title %}Retired{% endblock %}
 {% block custom_assets %}
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -18,4 +19,22 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+
+        <form method="POST" action="{{ url_for('retired.create') }}">
+    
+          {{ render_field(form.PlayerName, placeholder="LeBron James") }}
+          <button type="submit" class="btn btn-primary">Remove Player</button>
+        </form>
+    
+      </div>
+
+      
+    {% if message %}
+        <div class="header-description mb-4">
+        {{ message }}
+        </div>
+    {% endif %}
+
 {% endblock %}

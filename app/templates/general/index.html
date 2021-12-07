@@ -1,0 +1,108 @@
+{% extends "base_layout.html" %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}General{% endblock %}
+{% block custom_assets %}
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    {% assets "landing_css" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock %}
+
+{% block content %}
+    <div class="row header mt-4 mb-4">
+        <div class="col-sm-12">
+            <div class="header-title">
+                <h1>General Stats Page</h1>
+                <div class="header-description mb-4">
+                    This page displays general statistics.
+                </div>
+            </div>
+        </div>
+    </div>
+
+  {% if message %}
+    <div class="header-description mb-4">
+    {{ message }}
+    </div>
+  {% endif %}
+
+  <div class="container">
+        <div class="header-title">
+            <h3>Points by Age (2018 Season)</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Age</th>
+                            <th class="thead-row" scope="col">Average Points</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in age_rows %}
+                                <tr class="trow">
+                                    <td>{{row.age}}</td>
+                                    <td>{{row.avg_points}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+
+    <br></br>
+
+    <div class="container">
+        <div class="header-title">
+            <h3>Points by Position (2018 Season)</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Pos</th>
+                            <th class="thead-row" scope="col">Average Points</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in pos_rows %}
+                                <tr class="trow">
+                                    <td>{{row.pos}}</td>
+                                    <td>{{row.avg_points}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+
+    <br></br>
+
+    <div class="container">
+        <div class="header-title">
+            <h3>Player with the most points</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Player</th>
+                            <th class="thead-row" scope="col">Total Points</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in max_rows %}
+                                <tr class="trow">
+                                    <td>{{row.player}}</td>
+                                    <td>{{row.pts}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+
+    <br></br>
+
+
+{% endblock %}

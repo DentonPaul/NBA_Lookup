@@ -26,7 +26,7 @@ class PlayerAddForm(FlaskForm):
     threepa = DecimalField('3PA', validators=[DataRequired()])
     threep = DecimalField('3PM', validators=[DataRequired()])
     fta = DecimalField('FTA', validators=[DataRequired()])
-    ft = DecimalField('FGM', validators=[DataRequired()])
+    ft = DecimalField('FTM', validators=[DataRequired()])
     orb = DecimalField('Offensive Rebounds', validators=[DataRequired()])
     drb = DecimalField('Deffensive Rebounds', validators=[DataRequired()])
     ast = DecimalField('Assists', validators=[DataRequired()])
@@ -37,14 +37,12 @@ class PlayerAddForm(FlaskForm):
     pts = DecimalField('Points', validators=[DataRequired()])
     age = DecimalField('Age', validators=[DataRequired()])
 
-    # def validate(self):
-    #     check_validate = super(PlayerAddForm, self).validate()
-    #     if not check_validate:
-    #         return False
+class TradeForm(FlaskForm):
+    PlayerName = StringField('Player Name', validators=[Length(min=2, max=60), DataRequired()])
+    TeamName = StringField('Team Name', validators=[Length(min=2, max=60), DataRequired()])
 
-    #     q = db.session.query(Teams.teamname.distinct().label('name'))
-    #     team_names = [str(row.name) for row in q.all()]
+class PlayerRetired(FlaskForm):
+    PlayerName = StringField('Player Name', validators=[Length(min=2, max=60), DataRequired()])
 
-    #     if str(self.team.data) not in team_names:
-    #         return False
-    #     return True
+class SpecificForm(FlaskForm):
+    Age = DecimalField('Age Group', validators=[DataRequired()])

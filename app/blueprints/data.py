@@ -11,5 +11,9 @@ def coaches(db_name):
     dbs = ['coaches', 'coachstats', 'teams', 'teamstats', 'players', 'playerstats', 'topscorers']
     if db_name.lower() not in dbs:
         return f"database name must be one of these: {dbs}"
+
+    #####
+    # Raw SQL
     df = pd.read_sql_query(f'select * from {db_name}', db.get_engine())
+    #####
     return render_template('data/index.html',  title=db_name, tables=[df.to_html(classes='data', header="true")], titles=df.columns.values)

@@ -1,0 +1,120 @@
+{% extends "base_layout.html" %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}Specific{% endblock %}
+{% block custom_assets %}
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    {% assets "landing_css" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock %}
+
+{% block content %}
+    <div class="row header mt-4 mb-4">
+        <div class="col-sm-12">
+            <div class="header-title">
+                <h1>Specific Stats Page</h1>
+                <div class="header-description mb-4">
+                    Return statistics for a specific Age.
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div class="container">
+
+    <form method="POST" action="{{ url_for('specific.create') }}">
+
+      {{ render_field(form.Age, placeholder="28") }}
+      <button type="submit" class="btn btn-primary">Get Stats</button>
+    </form>
+
+  </div>
+
+  {% if tables %}  
+  <br></br>
+  <div class="container">
+        <div class="header-title">
+            <h3>Most Points at age {{ age }} (Season 2018)</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Player</th>
+                            <th class="thead-row" scope="col">Points</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in pts_rows %}
+                                <tr class="trow">
+                                    <td>{{row.player}}</td>
+                                    <td>{{row.pts}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+
+    <br></br>
+
+    <br></br>
+  <div class="container">
+        <div class="header-title">
+            <h3>Most Rebounds at age {{ age }} (Season 2018)</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Player</th>
+                            <th class="thead-row" scope="col">Rebounds</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in rbs_rows %}
+                                <tr class="trow">
+                                    <td>{{row.player}}</td>
+                                    <td>{{row.trb}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+
+    <br></br>
+
+    <br></br>
+  <div class="container">
+        <div class="header-title">
+            <h3>Most Assists at age {{ age }} (Season 2018)</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Player</th>
+                            <th class="thead-row" scope="col">Assists</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in ast_rows %}
+                                <tr class="trow">
+                                    <td>{{row.player}}</td>
+                                    <td>{{row.ast}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+
+    <br></br>
+
+    
+{% endif %}
+
+
+
+{% endblock %}

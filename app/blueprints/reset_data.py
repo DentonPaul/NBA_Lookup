@@ -13,7 +13,8 @@ reset_data_bp = Blueprint('reset_data', __name__)
 @reset_data_bp.route('/reset_data')
 def index():
 
-    # delete data from tables
+    #####
+    # All data access below uses SQLAlchemy ORM
 
     db.session.query(Coach_Stats).delete()
     db.session.commit()
@@ -166,6 +167,6 @@ def index():
         db.session.add(top_scorer)
         db.session.commit()
 
-    db.engine.execute('select * from teams')
+    #####
 
     return render_template('data/reset_data.html')

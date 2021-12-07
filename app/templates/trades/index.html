@@ -1,4 +1,5 @@
 {% extends "base_layout.html" %}
+{% from "_formhelpers.html" import render_field %}
 {% block title %}Trades{% endblock %}
 {% block custom_assets %}
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -13,9 +14,29 @@
             <div class="header-title">
                 <h1>Trades Page</h1>
                 <div class="header-description mb-4">
-                    List off players that have been recently traded.
+                    Enter a Player Name and the Team that they have been traded to.
                 </div>
             </div>
         </div>
     </div>
+
+  <div class="container">
+
+    <form method="POST" action="{{ url_for('trades.create') }}">
+
+      {{ render_field(form.PlayerName, placeholder="LeBron James") }}
+      {{ render_field(form.TeamName, placeholder="Detroit Pistons") }}
+      <button type="submit" class="btn btn-primary">Update Team Name</button>
+    </form>
+
+  </div>
+
+  {% if message %}
+    <div class="header-description mb-4">
+    {{ message }}
+    </div>
+  {% endif %}
+
+
+
 {% endblock %}
