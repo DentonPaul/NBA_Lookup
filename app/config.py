@@ -6,11 +6,11 @@ class BaseConfig:
     
 class DevConfig(BaseConfig):
     # SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
-    SQLALCHEMY_DATABASE_URI = "mysql://root:Turtleturtle7!@localhost/nba_dev"
+    SQLALCHEMY_DATABASE_URI = "mysql://root:password@localhost/nba_dev"
     
 
 class TestConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "mysql://root:Turtleturtle7!@localhost/nba_test"
+    SQLALCHEMY_DATABASE_URI = "mysql://root:password@localhost/nba_test"
 
 class ProdConfig(BaseConfig):
     try:

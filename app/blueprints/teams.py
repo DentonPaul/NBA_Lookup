@@ -15,12 +15,11 @@ def create():
     form = TeamForm()
     # perform sql #
     # render html template with data #
-    sql_general = f"select * from teams where teamname='{form.TeamName.data}'"
+    sql_general = f"CALL GetTeamGeneral('{form.TeamName.data}')"
     df = pd.read_sql_query(sql_general, db.get_engine())
     general_rows = [row for index, row in df.iterrows()]
 
-    sql_stats = f"select * from teamstats where teamid=(select teamid from teams where teamname='{form.TeamName.data}')"
-
+    sql_stats = f"CALL GetTeamStats('{form.TeamName.data}')"
     df_stats = pd.read_sql_query(sql_stats, db.get_engine())
     stat_rows = [row for index, row in df_stats.iterrows()]
 

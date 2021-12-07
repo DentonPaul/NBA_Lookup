@@ -6,8 +6,53 @@ initialize_bp = Blueprint('initialize', __name__)
 
 @initialize_bp.route('/initialize')
 def index():
-    # Stored Procedure
-    sql = "CALL GetPlayer('LeBron James');"
-    df = pd.read_sql_query(sql, db.get_engine())
+    
+    sql = r"""
+        USE `nba_dev`;
+        DROP procedure IF EXISTS `GetTeamGeneral`;
 
-    return df.to_html()
+        DELIMITER $$
+        USE `nba_dev`$$
+        CREATE PROCEDURE `GetTeamGeneral` (IN team_name varchar(500))
+        BEGIN
+        SELECT teamname, teamabbr, location from teams where teamname = team_name;
+        END$$
+
+        DELIMITER ;
+    """
+
+    db.session.execute(sql)
+    db.session.commit()
+
+    return "this endpoint does nothing"
+
+
+# stored procedure code below
+
+# USE `nba_dev`;
+# DROP procedure IF EXISTS `GetTeamGeneral`;
+
+# DELIMITER $$
+# USE `nba_dev`$$
+# CREATE PROCEDURE `GetTeamGeneral` (IN team_name varchar(500))
+# BEGIN
+# SELECT teamname, teamabbr, location from teams where teamname = team_name;
+# END$$
+
+# DELIMITER ;
+
+
+# USE `nba_dev`;
+# DROP procedure IF EXISTS `GetTeamStats`;
+
+# DELIMITER $$
+# USE `nba_dev`$$
+# CREATE PROCEDURE `GetTeamStats` (IN team_name varchar(500))
+# BEGIN
+# select ts.gms, ts.mp, ts.fg, ts.fga, ts.fgp, ts.threep, 
+#             ts.threepa, ts.threepp, ts.twop, ts.twopa, ts.twopp, ts.ft, 
+#             ts.fta, ts.ftp, ts.orb, ts.drb, ts.trb, ts.ast, ts.stl, ts.blk, ts.tov, ts.pf, ts.pts
+#             from teams as t join teamstats as ts on ts.teamid = t.teamid where t.teamname = team_name;
+# END$$
+
+# DELIMITER ;
