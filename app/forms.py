@@ -14,6 +14,9 @@ class TeamForm(FlaskForm):
 class PlayerLookupForm(FlaskForm):
     PlayerName = StringField('Player Name', validators=[Length(min=2, max=60), DataRequired()])
 
+class CoachLookupForm(FlaskForm):
+    CoachName = StringField('Coach Name', validators=[Length(min=2, max=60), DataRequired()])
+
 class PlayerAddForm(FlaskForm):
     PlayerName = StringField('Player Name', validators=[DataRequired(), Length(min=2, max=60)])
     team = StringField('Team', validators=[DataRequired(), Length(min=2, max=60)])

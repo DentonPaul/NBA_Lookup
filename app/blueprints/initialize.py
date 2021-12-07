@@ -56,3 +56,9 @@ def index():
 # END$$
 
 # DELIMITER ;
+
+# DROP INDEX playerstats_index ON playerstats;
+# CREATE INDEX playerstats_index ON playerstats(player) USING BTREE;
+
+# DROP INDEX coachstats_index ON coachstats;
+# CREATE INDEX coachstats_index ON coachstats(name) USING BTREE;

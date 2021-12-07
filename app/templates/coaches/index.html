@@ -1,0 +1,94 @@
+{% extends "base_layout.html" %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}Coach Search{% endblock %}
+{% block custom_assets %}
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    {% assets "landing_css" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock %}
+
+{% block content %}
+    <div class="row header mt-4 mb-4">
+        <div class="col-sm-12">
+            <div class="header-title">
+                    <h1>Search Coach Stats</h1>
+                    <div class="header-description mb-4">
+                        Enter a coaches name to return their statistics.
+                    </div>
+            </div>
+        </div>
+    </div>
+
+  <div class="container">
+
+    <form method="POST" action="{{ url_for('coaches.search') }}">
+
+      {{ render_field(form.CoachName, placeholder="Brad Stevens") }}
+      <button type="submit" class="btn btn-primary">LookUp</button>
+    </form>
+
+  </div>
+
+  {% if tables %}  
+    <div class="container">
+        <div class="header-title">
+            <h3>{{ CoachName }} (2018 Season)</h3>
+        </div>
+        <div class="table-wrapper">
+                    <table class="table-sm">
+                        <thead id="thead_st" class="thead">
+                          <tr>
+                            <th class="thead-row" scope="col">Team</th>
+                            <th class="thead-row" scope="col">#Games</th>
+                            <th class="thead-row" scope="col">W</th>
+                            <th class="thead-row" scope="col">L</th>
+                            <th class="thead-row" scope="col">Fran_G</th>
+                            <th class="thead-row" scope="col">Fran_W</th>
+                            <th class="thead-row" scope="col">Fran_L</th>
+                            <th class="thead-row" scope="col">care_W</th>
+                            <th class="thead-row" scope="col">care_L</th>
+                            <th class="thead-row" scope="col">care_WP</th>
+                            <th class="thead-row" scope="col">poseas_G</th>
+                            <th class="thead-row" scope="col">poseas_W</th>
+                            <th class="thead-row" scope="col">poseas_L</th>
+                            <th class="thead-row" scope="col">pofran_G</th>
+                            <th class="thead-row" scope="col">pofran_W</th>
+                            <th class="thead-row" scope="col">pofran_L</th>
+                            <th class="thead-row" scope="col">pocare_G</th>
+                            <th class="thead-row" scope="col">pocare_W</th>
+                            <th class="thead-row" scope="col">pocare_L</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in stat_rows %}
+                                <tr class="trow">
+                                    <td>{{row.teamname}}</td>
+                                    <td>{{row.seasg}}</td>
+                                    <td>{{row.seasw}}</td>
+                                    <td>{{row.seasl}}</td>
+                                    <td>{{row.frang}}</td>
+                                    <td>{{row.franw}}</td>
+                                    <td>{{row.franl}}</td>
+                                    <td>{{row.carew}}</td>
+                                    <td>{{row.carel}}</td>
+                                    <td>{{row.carewp}}</td>
+                                    <td>{{row.poseasg}}</td>
+                                    <td>{{row.poseasw}}</td>
+                                    <td>{{row.poseasl}}</td>
+                                    <td>{{row.pofrang}}</td>
+                                    <td>{{row.pofranw}}</td>
+                                    <td>{{row.pofranl}}</td>
+                                    <td>{{row.pocareg}}</td>
+                                    <td>{{row.pocarew}}</td>
+                                    <td>{{row.pocarel}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+    <br></br>
+{% endif %}
+
+{% endblock %}

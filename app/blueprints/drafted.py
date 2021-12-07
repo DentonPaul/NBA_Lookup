@@ -32,6 +32,10 @@ def add():
 
     #####
     # Raw SQL
+    db.session.execute("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;")
+    db.session.commit()
+    db.session.execute("START TRANSACTION;")
+    db.session.commit()
     sql_stats = f"""
     INSERT INTO playerstats(player, tm, gms, gstart, mp, fg, fga, fgp, threep, threepa, threepp, 
     twop, twopa, twopp, efgp, ft, fta, ftp, orb, drb, trb, ast, stl, blk, tov, pf, pts)
@@ -42,6 +46,8 @@ def add():
     {form.pf.data}, {form.pts.data});
     """
     db.engine.execute(sql_stats)
+    db.session.commit()
+    db.session.execute('COMMIT;')
     db.session.commit()
     #####
 
@@ -62,11 +68,19 @@ def add():
 
     #####
     # Raw SQL
+
+    db.session.execute("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;")
+    db.session.commit()
+    db.session.execute("START TRANSACTION;")
+    db.session.commit()
     sql_general = f"""
     INSERT INTO players(name, pos, age)
     VALUES ('{form.PlayerName.data}', '{form.pos.data}', {form.age.data});
     """
     db.engine.execute(sql_general)
+    db.session.commit()
+
+    db.session.execute('COMMIT;')
     db.session.commit()
     #####
 

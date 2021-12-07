@@ -1,9 +1,8 @@
 from flask import Blueprint, render_template
-from app.forms import PlayerLookupForm, PlayerAddForm
+from app.forms import PlayerLookupForm
 import pandas as pd
 from app.extensions import db
 from sqlalchemy import func
-from app.models import Player_Stats
 
 players_bp = Blueprint('players', __name__)
 
@@ -18,7 +17,7 @@ def search():
 
     #####
     # Raw SQL
-    sql_general = f"select pos, age from players where name='{form.PlayerName.data}'"
+    sql_general = f"select pos, age from players USE INDEX (player_index) where name='{form.PlayerName.data}'"
     df = pd.read_sql_query(sql_general, db.get_engine())
     #####
 
@@ -28,8 +27,11 @@ def search():
     general_rows = [row for index, row in df.iterrows()]
 
     #####
-    # Raw SQL
-    sql_stats = f"select * from playerstats where player='{form.PlayerName.data}'"
+    # Raw SQL, INDEX
+    sql_stats = f"""
+    select * from playerstats USE INDEX (playerstats_index)
+    where player = '{form.PlayerName.data}'
+    """
     df_stats = pd.read_sql_query(sql_stats, db.get_engine())
     #####
 
