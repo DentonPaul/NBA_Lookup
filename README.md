@@ -2,10 +2,10 @@
 - An online platform that makes it easy to explore team, player, and game data.
 
 ## Group Members
-Denton Paul
-Claudia Duncan
-Colin Hayes
-Peter Cunha
+- Denton Paul
+- Claudia Duncan
+- Colin Hayes
+- Peter Cunha
 
 ## Code that was ran on MySQL
 ```
