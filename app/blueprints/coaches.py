@@ -23,7 +23,8 @@ def search():
     cs.carew, cs.carel, cs.carewp, cs.poseasg, 
     cs.poseasw, cs.poseasl, cs.pofrang, cs.pofranw,
     cs.pofranl, cs.pocareg, cs.pocarew, cs.pocarel
-    from coachstats as cs USE INDEX (coachstats_index) join coaches as c on cs.name=c.name join teams on c.teamid=teams.teamid
+    from coachstats as cs USE INDEX (coachstats_index) 
+    join coaches as c on cs.name=c.name join teams on c.teamid=teams.teamid
     where cs.name = '{form.CoachName.data}';
     """
     df = pd.read_sql_query(sql_stats, db.get_engine())
